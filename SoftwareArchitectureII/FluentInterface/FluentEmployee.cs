@@ -29,7 +29,6 @@
             _employee.Address = Address;
             return this;
         }
-
         public Employee Employee
         {
             get { return _employee; }

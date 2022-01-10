@@ -11,7 +11,7 @@ namespace RefactoringII.FluentInterface
             foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(employee))
             {
                 string name = descriptor.Name;
-                object value = descriptor.GetValue(employee);
+                object? value = descriptor.GetValue(employee);
                 Console.WriteLine($"{name}={value}");
             }
 
@@ -22,7 +22,7 @@ namespace RefactoringII.FluentInterface
             foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(fluentEmployee.Employee))
             {
                 string name = descriptor.Name;
-                object value = descriptor.GetValue(fluentEmployee.Employee);
+                object? value = descriptor.GetValue(fluentEmployee.Employee);
                 Console.WriteLine($"{name}={value}");
             }
         }
@@ -51,5 +51,17 @@ namespace RefactoringII.FluentInterface
 
             return fluentEmployee;
         }
+        private FluentHistory GetFluentHistory(History history)
+        {
+            FluentHistory fluentHistory = new FluentHistory(history);
+
+            fluentHistory.LastBusiness("BNB")
+                .LastJob("10/10/1970")
+                .Salary(2000);
+
+            return fluentHistory;
+        }
+
+
     }
 }
